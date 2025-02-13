@@ -5,7 +5,7 @@ project(
     LANGUAGES CXX
     VERSION 0.1.0
     DESCRIPTION "Open-source modern c++ libraries"
-    HOMEPAGE_URL "https://github.com/user/project"
+    HOMEPAGE_URL "https://github.com/LiamStanDev/moon"
 )
 
 set(CMAKE_CXX_STANDARD 23)
