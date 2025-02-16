@@ -9,12 +9,9 @@ endif()
 
 # Configure clang-tidy
 set(CMAKE_CXX_CLANG_TIDY
-    ${CLANG_TIDY_PATH}
-    -checks=clang-analyzer-*,modernize-*,performance-*,readability-*,bugprone-*
-    -extra-arg=-std=c++${CMAKE_CXX_STANDARD}
-    -warnings-as-errors=*
-    -header-filter=.*
-    -format-style=file
+    "${CLANG_TIDY_PATH}"
+    "-extra-arg=-std=c++${CMAKE_CXX_STANDARD}"
+    "-config=${CMAKE_SOURCE_DIR}/.clang-tidy"
 )
 
 message(STATUS "Enabled clang-tidy for static analysis")
