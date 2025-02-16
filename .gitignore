@@ -1,2 +1,49 @@
-build/
-.cache/clangd/index
+# Build directories
+/build/
+/bin/
+/lib/
+/out/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# IDE and editor specific files
+*.swp
+*.swo
+*.swn
+*.idea/
+.vscode/
+*.code-workspace
+
+# Generated files
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+*.dSYM/
+*.pdb
+*.pch
+*.ilk
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.cache
+
+# CTest related files
+/Testing/
+CTestTestfile.cmake
+
+# CLion specific
+cmake-build-*/
+
+# Conan and vcpkg
+conanbuildinfo.*
+conan.lock
+vcpkg_installed/
+vcpkg.buildinfo
