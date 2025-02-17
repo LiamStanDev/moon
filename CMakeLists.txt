@@ -19,9 +19,9 @@ if(PROJECT_BINARY_DIR STREQUAL PROJECT_SOURCE_DIR)
 endif()
 
 # Project options
-option(MOON_ENABLE_WARNING "Enable warnings" OFF)
+option(MOON_ENABLE_WARNING "Enable warnings" ON)
 option(MOON_BUILD_TESTS "Build test suite" ON)
-option(MOON_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
+option(MOON_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)

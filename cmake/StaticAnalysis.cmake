@@ -18,6 +18,10 @@ message(STATUS "Enabled clang-tidy for static analysis")
 
 # cppcheck
 find_program(CPPCHECK_PATH cppcheck)
+if(NOT CPPCHECK_PATH)
+    message(WARNING "cppcheck not found. Disabling static analysis.")
+    return()
+endif()
 if(CPPCHECK_PATH)
     set(CMAKE_CXX_CPPCHECK
         ${CPPCHECK_PATH}

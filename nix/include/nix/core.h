@@ -9,5 +9,5 @@ namespace nix {
 template <class T>
 using Expected = std::expected<T, std::error_code>;
 
-Expected<ssize_t> ExpectedStdError(ssize_t ret) noexcept;
+Expected<ssize_t> PoxisErrorToExpected(ssize_t ret) noexcept;
 }  // namespace nix

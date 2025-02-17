@@ -6,7 +6,7 @@
 namespace nix {
 
 Expected<FileHandle> Open(fs::path& path, OpenFlag flag) noexcept {
-  auto ret = ExpectedStdError(::open(path.c_str(), static_cast<int>(flag)));
+  auto ret = PoxisErrorToExpected(::open(path.c_str(), static_cast<int>(flag)));
   if (!ret) {
     return ret;
   }
@@ -15,7 +15,7 @@ Expected<FileHandle> Open(fs::path& path, OpenFlag flag) noexcept {
 }
 
 Expected<void> Close(FileHandle fd) noexcept {
-  auto ret = ExpectedStdError(::close(fd.handle));
+  auto ret = PoxisErrorToExpected(::close(fd.handle));
   if (!ret) {
     return std::unexpected{ret.error()};
   }
@@ -23,15 +23,15 @@ Expected<void> Close(FileHandle fd) noexcept {
 }
 
 Expected<int> Write(FileHandle fd, std::span<const char> buffer) noexcept {
-  return ExpectedStdError(::write(fd.handle, buffer.data(), buffer.size()));
+  return PoxisErrorToExpected(::write(fd.handle, buffer.data(), buffer.size()));
 }
 
 Expected<int> Read(FileHandle fd, std::span<char> buffer) noexcept {
-  return ExpectedStdError(::read(fd.handle, buffer.data(), buffer.size()));
+  return PoxisErrorToExpected(::read(fd.handle, buffer.data(), buffer.size()));
 }
 
 Expected<void> Sync(FileHandle fd) noexcept {
-  auto ret = ExpectedStdError(::fsync(fd.handle) == -1);
+  auto ret = PoxisErrorToExpected(::fsync(fd.handle));
   if (!ret) {
     return std::unexpected{ret.error()};
   }
@@ -39,7 +39,8 @@ Expected<void> Sync(FileHandle fd) noexcept {
 }
 
 Expected<off_t> Seek(FileHandle fd, off_t offset, WhenceFlag flag) noexcept {
-  return ExpectedStdError(::lseek(fd.handle, offset, static_cast<int>(flag)));
+  return PoxisErrorToExpected(
+      ::lseek(fd.handle, offset, static_cast<int>(flag)));
 }
 
 }  // namespace nix
